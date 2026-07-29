@@ -1,0 +1,259 @@
+// Prisma schema for DPPK (Dashboard Perancangan & Penilaian Program Pembangunan Komuniti)
+// Kementerian Perumahan dan Kerajaan Tempatan (KPKT) - Malaysia
+// Phase 1 MVP with dummy/simulated data
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+// ============================================================
+// USER & ROLE MANAGEMENT (Modul 7)
+// ============================================================
+
+model Pengguna {
+  id           String   @id @default(cuid())
+  nama         String
+  email        String   @unique
+  jawatan      String
+  peranan      String   // Admin | PengurusProgram | PegawaiPBT | Penilai | PengurusanAtasan | OrangAwam
+  bahagian     String
+  negeri       String?
+  telefon      String?
+  statusAktif  Boolean  @default(true)
+  tarikhCipta  DateTime @default(now())
+  tarikhKemaskini DateTime @updatedAt
+
+  // Relations
+  programDicipta    Program[]      @relation("PengurusProgram")
+    programDiluluskan Program[]      @relation("Pelulus")
+    kemasKiniKemajuan KemajuanProgram[]
+    isuDilaporkan     IsuRisiko[]    @relation("IsuPelapor")
+    isuDiselesaikan   IsuRisiko[]    @relation("IsuPenyelesai")
+    penilaianDibuat   Penilaian[]
+    maklumBalas       MaklumBalasKomuniti[]
+    auditLog          AuditLog[]
+    peruntukanDikemaskini PeruntukanOE[] @relation("PeruntukanEditor")
+    waranDikeluarkan  WaranPeruntukan[]
+}
+
+model AuditLog {
+  id           String   @id @default(cuid())
+  penggunaId   String
+  pengguna     Pengguna @relation(fields: [penggunaId], references: [id])
+  modul        String   // e.g. "Perancangan", "Bajet", "Pelaksanaan"
+  aksi         String   // Cipta, Kemaskini, Padam, Lulus, dll.
+  entiti       String
+  entitiId     String?
+  butiran      String?
+  ipAlamat     String?
+  tarikh       DateTime @default(now())
+}
+
+// ============================================================
+// PROGRAM (Core entity - Modul 2, 4, 5)
+// ============================================================
+
+model Program {
+  id              String   @id @default(cuid())
+  kodProgram      String   @unique // e.g. PROG-2026-001
+  namaProgram     String
+  kategori        String   // Infrastruktur | Sosioekonomi | Kesejahteraan Rakyat | Transformasi Bandar
+  subKategori     String?
+  negeri          String
+  daerah          String
+  pbt             String?  // Pihak Berkuasa Tempatan
+  status          String   @default("Perancangan") // Perancangan | Diluluskan | DalamPelaksanaan | Selesai | Tergendala
+  statusLampu     String   @default("Hijau") // Hijau | Kuning | Merah
+  bajetDianggar   Float
+  bajetSebenar    Float    @default(0)
+  tarikhMula      DateTime
+  tarikhTamat     DateTime
+  objektif        String
+  kumpulanSasaran String?
+  peratusKemajuan Float    @default(0)
+  skorPenilaian   Float?   // 1-5
+  gredPenilaian   String?  // A-E
+  penerimaManfaat Int      @default(0)
+  bilanganAktiviti Int     @default(0)
+  catatan         String?
+  dokumenSokongan String?  // JSON array of filenames
+  tarikhCipta     DateTime @default(now())
+  tarikhKemaskini DateTime @updatedAt
+
+  // Relations
+  pengurusId      String
+  pengurus        Pengguna @relation("PengurusProgram", fields: [pengurusId], references: [id])
+  pelulusId       String?
+  pelulus         Pengguna? @relation("Pelulus", fields: [pelulusId], references: [id])
+  kpi             KPI[]
+  aktiviti        Aktiviti[]
+  kemajuan        KemajuanProgram[]
+  isuRisiko       IsuRisiko[]
+  penilaian       Penilaian[]
+  peruntukan      PeruntukanOE[]
+  maklumBalas     MaklumBalasKomuniti[]
+}
+
+model KPI {
+  id            String   @id @default(cuid())
+  programId     String
+  program       Program  @relation(fields: [programId], references: [id], onDelete: Cascade)
+  nama          String
+  sasaran       String
+  nilaiSasaran  Float
+  unit          String   // e.g. "%", " orang", " RM"
+  jenis         String   @default("Output") // Output | Outcome | Impact
+  pencapaianSebenar Float?
+  tarikhUkur    DateTime?
+  tarikhCipta   DateTime @default(now())
+}
+
+model Aktiviti {
+  id            String   @id @default(cuid())
+  programId     String
+  program       Program  @relation(fields: [programId], references: [id], onDelete: Cascade)
+  nama          String
+  tarikhMula    DateTime
+  tarikhTamat   DateTime
+  peratusKemajuan Float  @default(0)
+  status        String   @default("BelumMula") // BelumMula | DalamProgress | Selesai | Tertangguh
+  PIC           String?
+  tarikhCipta   DateTime @default(now())
+}
+
+model KemajuanProgram {
+  id            String   @id @default(cuid())
+  programId     String
+  program       Program  @relation(fields: [programId], references: [id], onDelete: Cascade)
+  penggunaId    String
+  pengguna      Pengguna @relation(fields: [penggunaId], references: [id])
+  peratusKemajuan Float
+  catatan       String?
+  bukti         String?  // filename
+  tarikh        DateTime @default(now())
+}
+
+model IsuRisiko {
+  id            String   @id @default(cuid())
+  programId     String
+  program       Program  @relation(fields: [programId], references: [id], onDelete: Cascade)
+  jenis         String   // Isu | Risiko
+  tajuk         String
+  penerangan    String
+  keutamaan     String   @default("Sederhana") // Rendah | Sederhana | Tinggi | Kritikal
+  status        String   @default("Terbuka") // Terbuka | DalamTindakan | Selesai
+  tarikhLapor   DateTime @default(now())
+  tarikhSelesai DateTime?
+  pelaporId     String
+  pelapor       Pengguna @relation("IsuPelapor", fields: [pelaporId], references: [id])
+  penyelesaiId  String?
+  penyelesai    Pengguna? @relation("IsuPenyelesai", fields: [penyelesaiId], references: [id])
+  tindakan      String?
+}
+
+model Penilaian {
+  id              String   @id @default(cuid())
+  programId       String
+  program         Program  @relation(fields: [programId], references: [id], onDelete: Cascade)
+  penilaiId       String
+  penilai         Pengguna @relation(fields: [penilaiId], references: [id])
+  tarikhPenilaian DateTime @default(now())
+  skorOutput      Float    @default(0) // 0-5
+  skorOutcome     Float    @default(0)
+  skorImpact      Float    @default(0)
+  skorKeseluruhan Float    @default(0)
+  gred            String   // A | B | C | D | E
+  pencapaianKPI   Float    @default(0) // %
+  pengajaran      String?
+  cadangan        String?
+  tarikhCipta     DateTime @default(now())
+}
+
+model MaklumBalasKomuniti {
+  id            String   @id @default(cuid())
+  programId     String
+  program       Program  @relation(fields: [programId], references: [id], onDelete: Cascade)
+  penggunaId    String?
+  pengguna      Pengguna? @relation(fields: [penggunaId], references: [id])
+  namaResponden String
+  skorKepuasan  Float    @default(0) // 1-5
+  komen         String?
+  tarikh        DateTime @default(now())
+}
+
+// ============================================================
+// BUDGET & OE MONITORING (Modul 3 + Sub-modul 5.3.1)
+// ============================================================
+
+model PeruntukanOE {
+  id                 String   @id @default(cuid())
+  tahunKewangan      Int
+  bahagian           String   // e.g. "Bahagian Pembangunan Komuniti"
+  objekAm            String   // Emolumen | Perkhidmatan & Bekalan | Aset | Bantuan & Kebajikan | Lain-lain
+  kodVot             String
+  kodAktiviti        String
+  silingPeruntukan   Float    // ceiling approved by MOF (RM)
+  jumlahDibelanjakan Float    @default(0)
+  jumlahKomited      Float    @default(0)
+  bakiPeruntukan     Float    @default(0) // computed: siling - dibelanjakan - komited
+  peratusPenggunaan  Float    @default(0) // %
+  statusPenggunaan   String   @default("Hijau") // Hijau (<80%) | Kuning (80-95%) | Merah (>95%)
+    kemaskiniOlehId   String?
+  kemaskiniOleh     Pengguna? @relation("PeruntukanEditor", fields: [kemaskiniOlehId], references: [id])
+  programId          String?
+  program            Program?  @relation(fields: [programId], references: [id])
+  waran              WaranPeruntukan[]
+  perbelanjaanBulanan PerbelanjaanBulanan[]
+  tarikhKemaskini    DateTime @updatedAt
+  tarikhCipta        DateTime @default(now())
+}
+
+model WaranPeruntukan {
+  id              String   @id @default(cuid())
+  nomborWaran     String   @unique
+  tahunKewangan   Int
+  bahagian        String
+  objekAm         String
+  jumlah          Float
+  tarikhWaran     DateTime
+  dikeluarkanOleh String   // MOF
+  status          String   @default("BerkuatKuasa") // Draf | BerkuatKuasa | DitarikBalik
+  peruntukanOEId  String?
+  peruntukanOE    PeruntukanOE? @relation(fields: [peruntukanOEId], references: [id])
+  dikeluarkanKepadaId String?
+  dikeluarkanKepada  Pengguna? @relation(fields: [dikeluarkanKepadaId], references: [id])
+  tarikhCipta     DateTime @default(now())
+}
+
+model Virement {
+  id              String   @id @default(cuid())
+  nomborRujukan   String   @unique
+  tahunKewangan   Int
+  bahagian        String
+  objekAmAsal     String
+  objekAmDestinasi String
+  jumlah          Float
+  justifikasi     String
+  status          String   @default("Mohon") // Mohon | Disemak | Diluluskan | Ditolak
+  dimohonOleh     String
+  tarikhMohon     DateTime @default(now())
+  tarikhLulus     DateTime?
+  tarikhCipta     DateTime @default(now())
+}
+
+model PerbelanjaanBulanan {
+  id              String   @id @default(cuid())
+  peruntukanOEId  String
+  peruntukanOE    PeruntukanOE @relation(fields: [peruntukanOEId], references: [id], onDelete: Cascade)
+  tahun           Int
+  bulan           Int      // 1-12
+  jumlahDibelanjakan Float
+  jumlahKomited  Float    @default(0)
+  unjuran        Float    @default(0) // planned spending for the month
+  tarikhCipta    DateTime @default(now())
+}

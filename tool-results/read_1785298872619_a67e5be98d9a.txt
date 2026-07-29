@@ -1,0 +1,298 @@
+     1→     1→[P1] [None] KEMENTERIAN PERUMAHAN DAN KERAJAAN TEMPATAN
+     2→     2→[P2] [None] (KPKT)
+     3→     3→[P3] [None] DOKUMEN KEPERLUAN PRODUK
+     4→     4→[P4] [None] (PRODUCT REQUIREMENT DOCUMENT - PRD)
+     5→     5→[P5] [None] Dashboard Perancangan dan Penilaian Program Pembangunan Komuniti
+     6→     6→[P6] [None] (Community Development Program Planning Dashboard)
+     7→     7→[P9] [Heading 1] ISI KANDUNGAN
+     8→     8→[P11] [Heading 1] 1. PENGENALAN
+     9→     9→[P12] [Heading 2] 1.1 Tujuan Dokumen
+    10→    10→[P13] [None] Dokumen Keperluan Produk (PRD) ini disediakan untuk menerangkan secara terperinci keperluan fungsian dan bukan fungsian bagi pembangunan sistem "Dashboard Perancangan dan Penilaian Program Pembangunan Komuniti" (DPPK) di bawah Kementerian Perumahan dan Kerajaan Tempatan (KPKT). Dokumen ini bertindak sebagai rujukan utama kepada pasukan pembangunan, pihak berkepentingan, dan pengurusan projek sepanjang kitaran hayat pembangunan sistem.
+    11→    11→[P14] [Heading 2] 1.2 Latar Belakang
+    12→    12→[P15] [None] KPKT melaksanakan pelbagai program pembangunan komuniti di peringkat Pihak Berkuasa Tempatan (PBT) dan negeri, merangkumi bidang seperti pembangunan sosioekonomi, infrastruktur komuniti, program kesejahteraan rakyat, dan inisiatif transformasi bandar/luar bandar. Pada masa kini, proses perancangan, pelaksanaan, pemantauan, dan penilaian program dijalankan secara berasingan menggunakan hamparan elektronik (spreadsheet), laporan manual, dan sistem yang tidak bersepadu. Ini menyebabkan kesukaran dalam mendapatkan gambaran menyeluruh (holistic view) mengenai status program, kekurangan ketelusan data, serta kelewatan dalam membuat keputusan berasaskan data (data-driven decision making).
+    13→    13→[P16] [None] Justeru, satu sistem Dashboard bersepadu diperlukan bagi menyokong keseluruhan kitaran hayat program — bermula daripada perancangan (planning), pelaksanaan (implementation), pemantauan (monitoring), sehingga penilaian (evaluation) — dalam satu platform digital yang mudah diakses, interaktif, dan berasaskan data masa nyata (real-time).
+    14→    14→[P17] [Heading 2] 1.3 Skop Projek
+    15→    15→[P18] [None] Skop pembangunan Fasa 1 sistem ini merangkumi pembangunan prototaip/produk minimum berdaya maju (MVP) menggunakan kerangka kerja React.js pada bahagian hadapan (frontend), dengan pangkalan data dummy/mock (data simulasi) bagi tujuan demonstrasi konsep, pengesahan aliran kerja (workflow validation), dan pembentangan kepada pihak pengurusan sebelum fasa integrasi dengan pangkalan data sebenar dan sistem sedia ada KPKT (seperti eSPEKS, MyLocalStat, atau sistem lain yang berkaitan) dilaksanakan pada fasa akan datang.
+    16→    16→[P19] [Heading 3] Dalam Skop (In-Scope)
+    17→    17→[P20] [List Paragraph] Modul Perancangan Program (Program Planning)
+    18→    18→[P21] [List Paragraph] Modul Pengurusan Bajet & Sumber (Budget & Resource Management)
+    19→    19→[P22] [List Paragraph] Modul Pelaksanaan & Pemantauan Program (Implementation & Monitoring)
+    20→    20→[P23] [List Paragraph] Modul Penilaian & Impak Program (Evaluation & Impact Assessment)
+    21→    21→[P24] [List Paragraph] Modul Pelaporan & Analitik (Reporting & Analytics)
+    22→    22→[P25] [List Paragraph] Modul Pentadbiran Pengguna & Peranan (User & Role Management)
+    23→    23→[P26] [List Paragraph] Pangkalan data dummy (data simulasi/mock JSON) bagi pembangunan dan ujian
+    24→    24→[P27] [Heading 3] Luar Skop (Out-of-Scope) — Fasa 1
+    25→    25→[P28] [List Paragraph] Integrasi dengan pangkalan data produksi/sistem sedia ada KPKT
+    26→    26→[P29] [List Paragraph] Pengesahan pengguna sebenar (Single Sign-On/MyDigital ID) — akan dilaksanakan pada Fasa 2
+    27→    27→[P30] [List Paragraph] Aplikasi mudah alih (mobile native app)
+    28→    28→[P31] [List Paragraph] Integrasi pembayaran/kewangan sebenar
+    29→    29→[P32] [Heading 2] 1.4 Definisi, Akronim dan Singkatan
+    30→    30→[P33] [Heading 1] 2. OBJEKTIF PROJEK
+    31→    31→[P34] [None] Objektif utama pembangunan sistem DPPK adalah seperti berikut:
+    32→    32→[P35] [List Paragraph] Menyediakan platform bersepadu untuk merancang, melaksana, memantau dan menilai program pembangunan komuniti di bawah KPKT secara end-to-end.
+    33→    33→[P36] [List Paragraph] Meningkatkan ketelusan dan kebertanggungjawaban (accountability) dalam pengurusan program melalui paparan data masa nyata dan analitik visual.
+    34→    34→[P37] [List Paragraph] Memudahkan proses membuat keputusan pihak pengurusan (Top Management) berasaskan data (data-driven decision making) melalui dashboard eksekutif.
+    35→    35→[P38] [List Paragraph] Mengurangkan pergantungan kepada proses manual dan hamparan elektronik yang berasingan (data silos).
+    36→    36→[P39] [List Paragraph] Menyediakan mekanisme penilaian impak program yang berstruktur, termasuk penjejakan KPI, hasil (outcome) dan impak (impact) program terhadap komuniti sasaran.
+    37→    37→[P40] [List Paragraph] Membina prototaip fungsian menggunakan React.js dan data dummy bagi tujuan pengesahan konsep (proof-of-concept) sebelum pelaburan penuh ke arah pembangunan sistem produksi.
+    38→    38→[P41] [List Paragraph] Menyediakan mekanisme pemantauan penggunaan peruntukan Bajet Pengurusan (Operating Expenditure - OE) yang diluluskan oleh Kementerian Kewangan (MOF) bagi setiap program, termasuk penjejakan waran peruntukan, kadar perbelanjaan (burn rate), dan baki peruntukan berbanding siling yang ditetapkan.
+    39→    39→[P42] [Heading 2] 2.1 Objektif Perniagaan (Business Objectives)
+    40→    40→[P43] [List Paragraph] Mempercepatkan kitaran pelaporan program daripada bulanan/suku tahunan kepada masa nyata (real-time).
+    41→    41→[P44] [List Paragraph] Mengurangkan masa penyediaan laporan pengurusan sehingga 50%.
+    42→    42→[P45] [List Paragraph] Meningkatkan kadar penyempurnaan program (project completion rate) melalui pemantauan proaktif.
+    43→    43→[P46] [Heading 1] 3. PENGGUNA SASARAN DAN PERANAN (USER PERSONAS & ROLES)
+    44→    44→[P47] [None] Sistem ini direka untuk menyokong pelbagai peringkat pengguna dalam ekosistem KPKT dan PBT, dengan capaian yang dikawal mengikut peranan (Role-Based Access Control - RBAC).
+    45→    45→[P48] [Heading 1] 4. KITARAN HAYAT PROGRAM (PROGRAM LIFECYCLE)
+    46→    46→[P49] [None] Sistem DPPK direka berasaskan lima (5) fasa kitaran hayat program pembangunan komuniti seperti berikut, di mana setiap fasa disokong oleh modul khusus dalam dashboard:
+    47→    47→[P50] [List Paragraph] Fasa 1 — Perancangan (Planning): Pengenalpastian keperluan komuniti, penetapan objektif, sasaran, bajet dan jadual pelaksanaan program.
+    48→    48→[P51] [List Paragraph] Fasa 2 — Kelulusan & Peruntukan (Approval & Budgeting): Proses kelulusan program dan peruntukan bajet/sumber.
+    49→    49→[P52] [List Paragraph] Fasa 3 — Pelaksanaan (Implementation): Pelaksanaan aktiviti program di peringkat lapangan dengan kemas kini status secara berkala.
+    50→    50→[P53] [List Paragraph] Fasa 4 — Pemantauan (Monitoring): Penjejakan kemajuan (progress tracking), pengurusan isu/risiko, dan pematuhan jadual.
+    51→    51→[P54] [List Paragraph] Fasa 5 — Penilaian (Evaluation): Penilaian hasil (output), kesan (outcome) dan impak (impact) program terhadap komuniti sasaran, serta pengklasifikasian pengajaran (lessons learned).
+    52→    52→[P55] [Heading 1] 5. KEPERLUAN FUNGSIAN (FUNCTIONAL REQUIREMENTS)
+    53→    53→[P56] [Heading 2] 5.1 Modul 1: Papan Pemuka Utama (Executive Dashboard)
+    54→    54→[P57] [None] Modul ini memaparkan ringkasan menyeluruh (overview) semua program mengikut status, wilayah, kategori dan bajet.
+    55→    55→[P58] [Heading 2] 5.2 Modul 2: Perancangan Program (Program Planning)
+    56→    56→[P59] [Heading 2] 5.3 Modul 3: Pengurusan Bajet & Sumber (Budget & Resource Management)
+    57→    57→[P60] [Heading 3] 5.3.1 Sub-Modul: Pemantauan Peruntukan OE Kementerian Kewangan (MOF Operating Expenditure Monitoring)
+    58→    58→[P61] [None] Sub-modul ini direka khusus untuk memantau penggunaan Bajet Pengurusan (Operating Expenditure - OE) yang diluluskan oleh Kementerian Kewangan (MOF) kepada KPKT bagi setiap tahun kewangan, selari dengan proses Anggaran Belanjawan Persekutuan dan Surat Pekeliling Perbendaharaan (SPP) yang berkuat kuasa. Sub-modul ini membolehkan pengurusan program menjejak siling peruntukan, waran yang dikeluarkan, kadar perbelanjaan, dan baki peruntukan bagi setiap objek am/aktiviti secara berasingan daripada peruntukan operasi dalaman kementerian, supaya pematuhan kepada had yang diluluskan MOF dapat dipantau secara berterusan.
+    59→    59→[P62] [None] Nota: Bagi Fasa 1 (MVP), data Siling Peruntukan OE, Waran Peruntukan dan rekod perbelanjaan akan disimulasikan menggunakan pangkalan data dummy (JSON) yang mencerminkan struktur sebenar iGFMAS/eSPKB, bagi membolehkan pengesahan aliran kerja dan paparan sebelum integrasi sebenar dengan sistem MOF dilaksanakan pada fasa akan datang (tertakluk kepada kelulusan capaian data rasmi daripada Kementerian Kewangan).
+    60→    60→[P63] [Heading 3] 5.3.2 Entiti Data Tambahan: Peruntukan OE
+    61→    61→[P64] [None] Struktur data dummy tambahan bagi menyokong sub-modul ini adalah seperti berikut:
+    62→    62→[P65] [Heading 2] 5.4 Modul 4: Pelaksanaan & Pemantauan (Implementation & Monitoring)
+    63→    63→[P66] [Heading 2] 5.5 Modul 5: Penilaian Program (Program Evaluation)
+    64→    64→[P67] [Heading 2] 5.6 Modul 6: Pelaporan & Analitik (Reporting & Analytics)
+    65→    65→[P68] [Heading 2] 5.7 Modul 7: Pentadbiran Pengguna & Peranan (User & Role Administration)
+    66→    66→[P69] [Heading 1] 6. KEPERLUAN BUKAN FUNGSIAN (NON-FUNCTIONAL REQUIREMENTS)
+    67→    67→[P70] [Heading 1] 7. SENIBINA TEKNIKAL (TECHNICAL ARCHITECTURE)
+    68→    68→[P71] [Heading 2] 7.1 Tindanan Teknologi (Technology Stack)
+    69→    69→[P72] [Heading 2] 7.2 Rasional Penggunaan Pangkalan Data Dummy
+    70→    70→[P73] [None] Bagi Fasa 1 (Proof-of-Concept/MVP), sistem akan menggunakan pangkalan data dummy berbentuk fail JSON berstruktur yang disajikan melalui mock API (contohnya menggunakan json-server) atau disimpan secara statik dalam aplikasi React. Pendekatan ini membolehkan pasukan pembangunan menguji keseluruhan aliran kerja (workflow) sistem — daripada perancangan sehingga penilaian program — tanpa pergantungan kepada infrastruktur pelayan dan pangkalan data sebenar KPKT, sekali gus mempercepatkan kitaran pembangunan dan pengesahan reka bentuk bersama pihak berkepentingan.
+    71→    71→[P74] [Heading 2] 7.3 Peranan z.ai (GLM 5.2) dalam Pembangunan
+    72→    72→[P75] [None] Model GLM 5.2 melalui platform z.ai akan digunakan sebagai alat bantuan pembangunan (AI coding assistant) untuk:
+    73→    73→[P76] [List Paragraph] Menjana struktur komponen React (component scaffolding) bagi setiap modul dashboard
+    74→    74→[P77] [List Paragraph] Menghasilkan set data dummy yang realistik dan konsisten dalam format JSON
+    75→    75→[P78] [List Paragraph] Membantu penulisan logik carta/visualisasi data dan penapis (filter)
+    76→    76→[P79] [List Paragraph] Mempercepatkan proses debugging dan penambahbaikan kod semasa fasa pembangunan prototaip
+    77→    77→[P80] [Heading 2] 7.4 Pelan Integrasi Masa Depan dengan Sistem Kewangan Kerajaan
+    78→    78→[P81] [None] Walaupun Fasa 1 menggunakan pangkalan data dummy, reka bentuk sub-modul Pemantauan Peruntukan OE (Bahagian 5.3.1) mesti mengambil kira keperluan integrasi masa depan dengan sistem kewangan rasmi Kerajaan Persekutuan, khususnya iGFMAS yang diselenggara oleh Jabatan Akauntan Negara Malaysia (JANM) bagi pihak Kementerian Kewangan. Antara pertimbangan reka bentuk adalah:
+    79→    79→[P82] [List Paragraph] Struktur medan data (objek am, kod vot, kod aktiviti) direka supaya selari dengan carta akaun (chart of accounts) iGFMAS bagi memudahkan pemetaan data pada fasa integrasi.
+    80→    80→[P83] [List Paragraph] Lapisan perkhidmatan data (data service layer) React direka secara modular (contoh: menggunakan custom hooks/API adapter pattern) supaya sumber data dummy JSON boleh digantikan dengan panggilan API iGFMAS/eSPKB sebenar tanpa perubahan besar pada komponen UI.
+    81→    81→[P84] [List Paragraph] Sebarang integrasi data sebenar dengan sistem MOF/JANM tertakluk kepada kelulusan capaian data rasmi, perjanjian pertukaran data (data sharing agreement), dan pematuhan dasar keselamatan siber Kerajaan (contoh: Rangka Kerja Keselamatan Siber Sektor Awam).
+    82→    82→[P85] [List Paragraph] Fasa 1 (MVP) akan mensimulasikan format data waran peruntukan dan laporan prestasi perbelanjaan berdasarkan format piawai yang digunakan dalam pelaporan kewangan Kerajaan, bagi memudahkan pengesahan konsep bersama Bahagian Kewangan KPKT.
+    83→    83→[P86] [Heading 2] 7.5 Struktur Data Dummy (Contoh Model Data)
+    84→    84→[P87] [None] Contoh struktur entiti utama bagi pangkalan data dummy (format JSON) adalah seperti berikut:
+    85→    85→[P88] [Heading 3] Entiti: Program
+    86→    86→[P89] [Heading 1] 8. ALIRAN PENGGUNA (USER FLOW) UTAMA
+    87→    87→[P90] [Heading 2] 8.1 Aliran Perancangan Program
+    88→    88→[P91] [None] Log Masuk → Papan Pemuka Utama → Modul Perancangan Program → Cipta Cadangan Baharu → Isi Maklumat Program (objektif, sasaran, bajet, KPI) → Muat Naik Dokumen Sokongan → Hantar untuk Semakan → Kelulusan oleh Pengurus Program → Program Berstatus "Diluluskan".
+    89→    89→[P92] [Heading 2] 8.2 Aliran Pemantauan Pelaksanaan
+    90→    90→[P93] [None] Log Masuk → Senarai Program Aktif → Pilih Program → Kemas Kini Peratus Kemajuan → Muat Naik Bukti Pelaksanaan → Sistem Kemas Kini Penunjuk Status (Traffic Light) → Notifikasi Automatik jika Tergendala.
+    91→    91→[P94] [Heading 2] 8.3 Aliran Pemantauan Peruntukan OE
+    92→    92→[P95] [None] Log Masuk → Modul Bajet & Sumber → Sub-Modul Peruntukan OE → Pilih Tahun Kewangan/Bahagian → Papar Siling Peruntukan & Waran Berkaitan → Kemas Kini Perbelanjaan/Komitmen Terkini → Sistem Kira Baki Peruntukan & Penunjuk Status → Jana Laporan Prestasi Perbelanjaan untuk Bahagian Kewangan/MOF.
+    93→    93→[P96] [Heading 2] 8.4 Aliran Penilaian Program
+    94→    94→[P97] [None] Log Masuk → Modul Penilaian → Pilih Program Selesai → Input Pencapaian Sebenar berbanding KPI → Rekod Maklum Balas Komuniti → Jana Skor Penilaian → Rekod Pengajaran & Cadangan → Simpan Laporan Penilaian → Papar dalam Dashboard Analitik.
+    95→    95→[P98] [Heading 1] 9. GARIS PANDUAN REKA BENTUK ANTARA MUKA (UI/UX)
+    96→    96→[P99] [List Paragraph] Susun atur dashboard mengikut prinsip "F-pattern": ringkasan KPI di bahagian atas, carta utama di tengah, jadual terperinci di bawah.
+    97→    97→[P100] [List Paragraph] Skema warna mengikut identiti korporat KPKT (biru navy, putih, aksen kuning/emas) — boleh dirujuk kepada garis panduan jenama rasmi KPKT.
+    98→    98→[P101] [List Paragraph] Penggunaan penunjuk status warna (traffic light: Hijau = On-Track, Kuning = Perhatian, Merah = Kritikal) secara konsisten di semua modul.
+    99→    99→[P102] [List Paragraph] Navigasi sisi (sidebar navigation) tetap bagi memudahkan pergerakan antara modul (Perancangan, Pelaksanaan, Penilaian, Pelaporan).
+   100→   100→[P103] [List Paragraph] Reka bentuk responsif untuk paparan desktop dan tablet.
+   101→   101→[P104] [List Paragraph] Setiap carta/visualisasi perlu mempunyai tajuk, label paksi, dan legenda yang jelas dalam Bahasa Malaysia.
+   102→   102→[P105] [Heading 1] 10. PELAN PEMBANGUNAN DAN MILESTONE
+   103→   103→[P106] [Heading 1] 11. METRIK KEJAYAAN (SUCCESS METRICS)
+   104→   104→[P107] [Heading 1] 12. RISIKO DAN MITIGASI
+   105→   105→[P108] [Heading 1] 13. KELULUSAN DAN PENGESAHAN
+   106→   106→[P109] [None] Dokumen ini memerlukan pengesahan dan kelulusan daripada pihak berkepentingan berikut sebelum fasa pembangunan bermula:
+   107→   107→[P110] [Heading 1] 14. LAMPIRAN
+   108→   108→[P111] [Heading 2] 14.1 Rujukan
+   109→   109→[P112] [List Paragraph] Pelan Strategik KPKT (rujukan dalaman)
+   110→   110→[P113] [List Paragraph] Dokumentasi rasmi React.js — https://react.dev
+   111→   111→[P114] [List Paragraph] Dokumentasi z.ai GLM Model — https://z.ai
+   112→   112→[P115] [Heading 2] 14.2 Sejarah Semakan Dokumen
+   113→   113→---TABLES---
+   114→   114→### TABLE 0 ###
+   115→   115→Perkara | Butiran
+   116→   116→Nama Sistem | Dashboard Perancangan & Penilaian Program Pembangunan Komuniti (DPPK)
+   117→   117→Versi Dokumen | 1.0
+   118→   118→Tarikh | 29 Julai 2026
+   119→   119→Status | Draf untuk Semakan
+   120→   120→Platform Pembangunan | React.js (Frontend) dengan Pangkalan Data Dummy/Mock
+   121→   121→Alat Bantuan AI | z.ai — Model GLM 5.2
+   122→   122→Disediakan Oleh | Bahagian Perancangan Strategik & Digital, KPKT
+   123→   123→Kerahsiaan | Terhad — Kegunaan Dalaman KPKT Sahaja
+   124→   124→### TABLE 1 ###
+   125→   125→Istilah | Penerangan
+   126→   126→KPKT | Kementerian Perumahan dan Kerajaan Tempatan
+   127→   127→PBT | Pihak Berkuasa Tempatan
+   128→   128→PRD | Product Requirement Document / Dokumen Keperluan Produk
+   129→   129→MVP | Minimum Viable Product / Produk Minimum Berdaya Maju
+   130→   130→KPI | Key Performance Indicator / Petunjuk Prestasi Utama
+   131→   131→UI/UX | User Interface / User Experience
+   132→   132→CRUD | Create, Read, Update, Delete
+   133→   133→RBAC | Role-Based Access Control / Kawalan Capaian Berasaskan Peranan
+   134→   134→GLM 5.2 | Model bahasa besar (LLM) daripada z.ai yang digunakan untuk membantu penjanaan kod semasa pembangunan
+   135→   135→MOF | Kementerian Kewangan Malaysia (Ministry of Finance)
+   136→   136→OE | Operating Expenditure / Perbelanjaan Mengurus (Bajet Pengurusan)
+   137→   137→DE | Development Expenditure / Perbelanjaan Pembangunan
+   138→   138→iGFMAS | Integrated Government Financial and Accounting Management System — sistem kewangan pusat Kerajaan Persekutuan
+   139→   139→ePBT / eSPKB | Sistem Perancangan & Kawalan Belanjawan elektronik yang digunakan oleh agensi Kerajaan
+   140→   140→Waran Peruntukan | Dokumen rasmi kelulusan peruntukan yang dikeluarkan oleh MOF kepada Kementerian/Jabatan
+   141→   141→Virement | Proses pindahan peruntukan bajet antara aktiviti/objek perbelanjaan tertakluk kepada kelulusan
+   142→   142→SPP | Surat Pekeliling Perbendaharaan — arahan/garis panduan rasmi berkaitan pengurusan kewangan Kerajaan
+   143→   143→Baki Peruntukan | Jumlah peruntukan OE yang masih belum dibelanjakan pada satu-satu masa
+   144→   144→### TABLE 2 ###
+   145→   145→Peranan (Role) | Contoh Pengguna | Keperluan Utama
+   146→   146→Pentadbir Sistem (Admin) | Bahagian ICT KPKT | Pengurusan pengguna, konfigurasi sistem, capaian penuh semua modul
+   147→   147→Pengurus Program (Program Manager) | Pegawai Bahagian Pembangunan Komuniti | Mencipta & mengurus perancangan program, kemas kini status pelaksanaan
+   148→   148→Pegawai PBT (Field Officer) | Pegawai Majlis Daerah/Perbandaran | Kemas kini data pelaksanaan program di peringkat lapangan, muat naik bukti pelaksanaan
+   149→   149→Penilai Program (Evaluator) | Bahagian Perancangan Strategik | Menjalankan penilaian pasca-pelaksanaan, merekod dapatan impak & KPI
+   150→   150→Pengurusan Atasan (Top Management) | Ketua Setiausaha, Timbalan KSU, Ketua Bahagian | Melihat dashboard eksekutif, laporan ringkasan, analitik strategik
+   151→   151→Orang Awam/Pihak Berkepentingan (Public View - opsyenal) | Rakyat, NGO, media | Melihat maklumat program secara terhad (read-only, ringkasan)
+   152→   152→### TABLE 3 ###
+   153→   153→ID | Keperluan | Prioriti
+   154→   154→FR-1.1 | Sistem mesti memaparkan jumlah keseluruhan program mengikut status (Perancangan, Diluluskan, Dalam Pelaksanaan, Selesai, Tergendala) | Tinggi
+   155→   155→FR-1.2 | Sistem mesti memaparkan carta peta (map view) taburan program mengikut negeri/daerah di Malaysia | Tinggi
+   156→   156→FR-1.3 | Sistem mesti memaparkan carta prestasi bajet (peruntukan vs perbelanjaan sebenar) | Tinggi
+   157→   157→FR-1.4 | Sistem mesti menyediakan penapis (filter) mengikut tahun, negeri, kategori program dan status | Tinggi
+   158→   158→FR-1.5 | Sistem mesti memaparkan KPI ringkasan (bilangan penerima manfaat, kadar siap, kadar impak positif) | Sederhana
+   159→   159→FR-1.6 | Sistem mesti membenarkan eksport dashboard kepada format PDF/imej untuk pembentangan | Rendah
+   160→   160→FR-1.7 | Sistem mesti memaparkan kad ringkasan (summary card) Siling Peruntukan OE tahun semasa yang diluluskan MOF, jumlah dibelanjakan, dan peratus penggunaan (% utilization) di bahagian atas dashboard eksekutif | Tinggi
+   161→   161→### TABLE 4 ###
+   162→   162→ID | Keperluan | Prioriti
+   163→   163→FR-2.1 | Sistem mesti membenarkan pengguna mencipta cadangan program baharu (nama, kategori, lokasi, objektif, kumpulan sasaran, tempoh) | Tinggi
+   164→   164→FR-2.2 | Sistem mesti membenarkan penetapan bajet dianggar dan sumber (manusia, peralatan, kewangan) bagi setiap program | Tinggi
+   165→   165→FR-2.3 | Sistem mesti membenarkan penetapan KPI dan sasaran (target) terukur bagi setiap program semasa fasa perancangan | Tinggi
+   166→   166→FR-2.4 | Sistem mesti menyokong aliran kerja kelulusan (approval workflow) berbilang peringkat (draf → semakan → kelulusan) | Tinggi
+   167→   167→FR-2.5 | Sistem mesti membenarkan lampiran dokumen sokongan (kertas cadangan, kajian keperluan komuniti) | Sederhana
+   168→   168→FR-2.6 | Sistem mesti memaparkan senarai program mengikut status perancangan dalam bentuk jadual dan carta Gantt | Sederhana
+   169→   169→FR-2.7 | Sistem mesti membenarkan pemilihan templat program berdasarkan program lepas yang serupa | Rendah
+   170→   170→### TABLE 5 ###
+   171→   171→ID | Keperluan | Prioriti
+   172→   172→FR-3.1 | Sistem mesti memaparkan pecahan peruntukan bajet mengikut kategori perbelanjaan | Tinggi
+   173→   173→FR-3.2 | Sistem mesti menjejak perbelanjaan sebenar berbanding peruntukan (variance analysis) secara automatik | Tinggi
+   174→   174→FR-3.3 | Sistem mesti memberi amaran (alert) apabila perbelanjaan menghampiri atau melebihi had peruntukan | Sederhana
+   175→   175→FR-3.4 | Sistem mesti membenarkan penambahbaikan/pindaan peruntukan (budget revision) dengan rekod audit trail | Sederhana
+   176→   176→### TABLE 6 ###
+   177→   177→ID | Keperluan | Prioriti
+   178→   178→FR-3.5 | Sistem mesti membenarkan input/muat naik Siling Peruntukan OE tahunan yang diluluskan MOF bagi setiap Bahagian/Program, mengikut Objek Am (Emolumen, Perkhidmatan & Bekalan, Aset, Bantuan & Kebajikan, dsb.) sebagaimana struktur iGFMAS | Tinggi
+   179→   179→FR-3.6 | Sistem mesti merekod dan menjejak Waran Peruntukan (nombor waran, tarikh keluar, jumlah, objek am berkaitan) yang dikeluarkan oleh MOF sepanjang tahun kewangan | Tinggi
+   180→   180→FR-3.7 | Sistem mesti mengira dan memaparkan Baki Peruntukan OE (Siling − Jumlah Dibelanjakan − Jumlah Ditempah/Komited) secara automatik dan masa nyata bagi setiap program dan objek am | Tinggi
+   181→   181→FR-3.8 | Sistem mesti memaparkan carta kadar perbelanjaan (burn rate) OE bulanan/suku tahunan berbanding unjuran perbelanjaan yang dirancang | Tinggi
+   182→   182→FR-3.9 | Sistem mesti mengklasifikasikan status penggunaan peruntukan mengikut penunjuk warna: Hijau (< 80% siling), Kuning (80%–95% siling), Merah (> 95% siling atau berisiko lebihan peruntukan/overspend) | Tinggi
+   183→   183→FR-3.10 | Sistem mesti menyokong proses permohonan dan rekod Virement (pindahan peruntukan antara objek am/aktiviti) berserta status kelulusan MOF/Perbendaharaan | Sederhana
+   184→   184→FR-3.11 | Sistem mesti menjana Laporan Prestasi Perbelanjaan OE mengikut format yang selaras dengan keperluan pelaporan MOF (contoh: Laporan Suku Tahunan Prestasi Perbelanjaan, Laporan ICU JPM) | Tinggi
+   185→   185→FR-3.12 | Sistem mesti membenarkan perbandingan peruntukan OE antara tahun kewangan (trend multi-tahun) bagi tujuan unjuran belanjawan akan datang | Sederhana
+   186→   186→FR-3.13 | Sistem mesti memberi amaran automatik kepada Pengurus Program dan Pentadbir sekiranya baki peruntukan tidak mencukupi untuk menampung komitmen program yang dirancang | Sederhana
+   187→   187→FR-3.14 | Sistem mesti menyediakan medan rujukan integrasi (contoh: kod vot, kod aktiviti, kod projek) yang selaras dengan struktur iGFMAS bagi memudahkan penyelarasan data pada fasa integrasi sistem sebenar | Rendah
+   188→   188→### TABLE 7 ###
+   189→   189→Medan (Field) | Jenis Data | Penerangan
+   190→   190→idPeruntukan | String/UUID | Pengecam unik rekod peruntukan OE
+   191→   191→tahunKewangan | Number | Tahun kewangan berkaitan (contoh: 2026)
+   192→   192→bahagian | String | Bahagian/PTJ KPKT yang menerima peruntukan
+   193→   193→objekAm | String | Kategori objek am mengikut iGFMAS (Emolumen, Perkhidmatan & Bekalan, Aset, Bantuan & Kebajikan, dll.)
+   194→   194→kodVot / kodAktiviti | String | Kod rujukan vot/aktiviti bagi tujuan penyelarasan dengan iGFMAS
+   195→   195→silingPeruntukan | Number | Jumlah siling peruntukan OE diluluskan MOF (RM)
+   196→   196→nomborWaran | String | Nombor rujukan waran peruntukan
+   197→   197→tarikhWaran | Date | Tarikh waran dikeluarkan oleh MOF
+   198→   198→jumlahDibelanjakan | Number | Jumlah perbelanjaan sebenar setakat tarikh semasa (RM)
+   199→   199→jumlahKomited | Number | Jumlah tempahan/tanggungan (commitment) yang belum dibayar (RM)
+   200→   200→bakiPeruntukan | Number | Baki peruntukan (dikira: siling − dibelanjakan − komited)
+   201→   201→statusPenggunaan | Enum | Hijau | Kuning | Merah (berdasarkan peratus penggunaan)
+   202→   202→programBerkaitan | Reference (id) | Rujukan kepada rekod Program yang menggunakan peruntukan ini
+   203→   203→### TABLE 8 ###
+   204→   204→ID | Keperluan | Prioriti
+   205→   205→FR-4.1 | Sistem mesti membenarkan pegawai lapangan mengemas kini peratus kemajuan (% completion) program secara berkala | Tinggi
+   206→   206→FR-4.2 | Sistem mesti membenarkan muat naik bukti pelaksanaan (gambar, laporan aktiviti, minit mesyuarat) | Tinggi
+   207→   207→FR-4.3 | Sistem mesti memaparkan carta Gantt/garis masa (timeline) berbanding jadual pelaksanaan sebenar | Tinggi
+   208→   208→FR-4.4 | Sistem mesti menyediakan modul pengurusan isu/risiko (issue log) berkaitan pelaksanaan program | Sederhana
+   209→   209→FR-4.5 | Sistem mesti memaparkan penunjuk status (traffic light indicator: Hijau/Kuning/Merah) bagi setiap program berdasarkan pencapaian jadual dan bajet | Tinggi
+   210→   210→FR-4.6 | Sistem mesti menghantar notifikasi/peringatan automatik bagi program yang tergendala atau lewat dari jadual | Sederhana
+   211→   211→### TABLE 9 ###
+   212→   212→ID | Keperluan | Prioriti
+   213→   213→FR-5.1 | Sistem mesti membenarkan penilai merekod pencapaian sebenar berbanding KPI/sasaran yang ditetapkan semasa perancangan | Tinggi
+   214→   214→FR-5.2 | Sistem mesti menyokong penilaian pelbagai dimensi: Output (hasil segera), Outcome (kesan jangka sederhana), Impact (impak jangka panjang) | Tinggi
+   215→   215→FR-5.3 | Sistem mesti membenarkan input maklum balas/kepuasan komuniti (survey ringkas atau skor kepuasan) | Sederhana
+   216→   216→FR-5.4 | Sistem mesti menjana skor keseluruhan/rating penilaian program (contoh: skala 1-5 atau gred A-E) | Sederhana
+   217→   217→FR-5.5 | Sistem mesti membenarkan rekod pengajaran (lessons learned) dan cadangan penambahbaikan untuk program akan datang | Sederhana
+   218→   218→FR-5.6 | Sistem mesti memaparkan perbandingan prestasi antara program dalam kategori yang sama (benchmarking) | Rendah
+   219→   219→### TABLE 10 ###
+   220→   220→ID | Keperluan | Prioriti
+   221→   221→FR-6.1 | Sistem mesti menjana laporan automatik (bulanan/suku tahunan/tahunan) mengikut format piawai KPKT | Tinggi
+   222→   222→FR-6.2 | Sistem mesti membenarkan penjanaan laporan tersuai (custom report builder) berdasarkan penapis yang dipilih | Sederhana
+   223→   223→FR-6.3 | Sistem mesti membenarkan eksport laporan dalam format PDF dan Excel | Tinggi
+   224→   224→FR-6.4 | Sistem mesti memaparkan carta perbandingan trend prestasi program merentasi tahun | Sederhana
+   225→   225→### TABLE 11 ###
+   226→   226→ID | Keperluan | Prioriti
+   227→   227→FR-7.1 | Sistem mesti membenarkan pentadbir mencipta, mengemaskini dan menyahaktifkan akaun pengguna | Tinggi
+   228→   228→FR-7.2 | Sistem mesti menyokong kawalan capaian berasaskan peranan (RBAC) mengikut jadual peranan di Bahagian 3 | Tinggi
+   229→   229→FR-7.3 | Sistem mesti merekod log aktiviti pengguna (audit log) bagi tujuan integriti data | Sederhana
+   230→   230→### TABLE 12 ###
+   231→   231→Kategori | Keperluan
+   232→   232→Kebolehgunaan (Usability) | Antara muka mesti responsif (responsive design), mesra pengguna, dan boleh diakses melalui pelayar web utama (Chrome, Edge, Firefox). Bahasa antara muka utama: Bahasa Malaysia, dengan pilihan Bahasa Inggeris (opsyenal).
+   233→   233→Prestasi (Performance) | Masa muat papan pemuka tidak melebihi 3 saat bagi set data dummy sehingga 500 rekod program.
+   234→   234→Kebolehskalaan (Scalability) | Seni bina sistem mesti membenarkan penggantian pangkalan data dummy kepada pangkalan data sebenar (contoh: PostgreSQL/MySQL) tanpa perubahan besar pada logik frontend.
+   235→   235→Keselamatan (Security) | Fasa MVP menggunakan pengesahan mudah (mock authentication); reka bentuk mesti bersedia untuk integrasi SSO/MyDigital ID pada fasa akan datang.
+   236→   236→Kebolehselenggaraan (Maintainability) | Kod sumber mesti mengikut struktur modular (component-based architecture) React.js, dengan dokumentasi kod yang jelas.
+   237→   237→Kebolehcapaian (Accessibility) | Antara muka digalakkan mematuhi garis panduan asas WCAG 2.1 (kontras warna, label input, navigasi papan kekunci).
+   238→   238→Keserasian Pelayar (Compatibility) | Sistem mesti berfungsi dengan baik pada resolusi skrin desktop dan tablet (minimum 1024px lebar).
+   239→   239→Ketersediaan Data (Data Availability) | Data dummy mesti disimpan dalam format berstruktur (JSON/mock API menggunakan json-server atau setara) supaya mudah digantikan kelak.
+   240→   240→Pematuhan Kewangan (Financial Compliance) | Struktur data dan pelaporan peruntukan OE mesti selaras dengan format Objek Am, kod vot/aktiviti dan keperluan pelaporan sebagaimana diamalkan dalam iGFMAS serta tertakluk kepada Surat Pekeliling Perbendaharaan (SPP) semasa.
+   241→   241→Ketepatan Masa Data Kewangan (Data Timeliness) | Kemas kini rekod perbelanjaan/komitmen OE digalakkan dilakukan sekurang-kurangnya setiap bulan bagi memastikan penunjuk baki peruntukan kekal relevan.
+   242→   242→### TABLE 13 ###
+   243→   243→Komponen | Teknologi Dicadangkan
+   244→   244→Frontend Framework | React.js (versi 18+), dengan React Router untuk navigasi berbilang halaman
+   245→   245→Pengurusan State | React Context API / Redux Toolkit (bergantung kepada kerumitan aplikasi)
+   246→   246→Reka Bentuk UI | Tailwind CSS / Material UI (MUI) untuk komponen dashboard yang konsisten
+   247→   247→Carta & Visualisasi Data | Recharts / Chart.js / ApexCharts untuk carta bar, pai, garis dan carta Gantt
+   248→   248→Peta Interaktif | Leaflet.js / React-Leaflet untuk paparan taburan program mengikut lokasi
+   249→   249→Pangkalan Data Dummy | JSON Server / Mock Service Worker (MSW) / fail JSON statik bagi mensimulasikan REST API
+   250→   250→Alat Bantuan Pembangunan (AI-assisted) | z.ai — Model GLM 5.2, digunakan untuk penjanaan kod komponen React, penstrukturan data dummy, dan pempercepatan pembangunan prototaip
+   251→   251→Kawalan Versi | Git / GitHub atau GitLab dalaman KPKT
+   252→   252→Persekitaran Pembangunan | Node.js & npm/yarn, Vite atau Create React App sebagai build tool
+   253→   253→### TABLE 14 ###
+   254→   254→Medan (Field) | Jenis Data | Penerangan
+   255→   255→id | String/UUID | Pengecam unik program
+   256→   256→namaProgram | String | Nama program pembangunan komuniti
+   257→   257→kategori | String | Contoh: Infrastruktur, Sosioekonomi, Kesejahteraan Rakyat
+   258→   258→negeri / daerah | String | Lokasi pelaksanaan program
+   259→   259→status | Enum | Perancangan | Diluluskan | Dalam Pelaksanaan | Selesai | Tergendala
+   260→   260→bajetDianggar / bajetSebenar | Number | Nilai bajet dalam Ringgit Malaysia (RM)
+   261→   261→tarikhMula / tarikhTamat | Date | Tempoh pelaksanaan program
+   262→   262→kpiSasaran | Array/Object | Senarai KPI dan sasaran ditetapkan
+   263→   263→peratusKemajuan | Number (0-100) | Peratus kemajuan pelaksanaan semasa
+   264→   264→skorPenilaian | Number | Skor penilaian pasca-pelaksanaan (1-5)
+   265→   265→penerimaManfaat | Number | Anggaran/bilangan sebenar penerima manfaat
+   266→   266→### TABLE 15 ###
+   267→   267→Fasa | Aktiviti Utama | Output | Tempoh Anggaran
+   268→   268→Fasa 0 | Persediaan projek, penetapan seni bina, persediaan data dummy | Struktur projek React & skema data JSON | 1 minggu
+   269→   269→Fasa 1 | Pembangunan Modul Papan Pemuka Utama & Perancangan Program | Modul 1 & 2 berfungsi | 2 minggu
+   270→   270→Fasa 2 | Pembangunan Modul Bajet, Pelaksanaan & Pemantauan | Modul 3 & 4 berfungsi | 2 minggu
+   271→   271→Fasa 3 | Pembangunan Modul Penilaian & Pelaporan/Analitik | Modul 5 & 6 berfungsi | 2 minggu
+   272→   272→Fasa 4 | Modul Pentadbiran Pengguna, Ujian Menyeluruh (UAT) | Sistem MVP lengkap & stabil | 1 minggu
+   273→   273→Fasa 5 | Pembentangan kepada Pengurusan & Pengumpulan Maklum Balas | Laporan penilaian prototaip | 1 minggu
+   274→   274→### TABLE 16 ###
+   275→   275→Metrik | Sasaran
+   276→   276→Kelengkapan modul fungsian mengikut skop | 100% modul dalam skop berfungsi (Fasa 1)
+   277→   277→Masa muat papan pemuka (dummy data) | ≤ 3 saat
+   278→   278→Penerimaan pengguna semasa UAT (User Acceptance Testing) | ≥ 80% maklum balas positif daripada pengguna ujian
+   279→   279→Ketepatan paparan data berbanding data dummy sumber | 100% (tiada percanggahan data)
+   280→   280→Kesediaan sistem untuk integrasi pangkalan data sebenar | Seni bina modular disahkan oleh pasukan teknikal
+   281→   281→Ketepatan pengiraan baki peruntukan OE (siling − dibelanjakan − komited) | 100% padanan dengan pengiraan manual/kajian kes ujian
+   282→   282→Kesediaan format laporan prestasi perbelanjaan OE berbanding format rujukan MOF | Disahkan oleh Bahagian Kewangan KPKT semasa UAT
+   283→   283→### TABLE 17 ###
+   284→   284→Risiko | Kesan | Langkah Mitigasi
+   285→   285→Kekurangan kejelasan keperluan data sebenar daripada bahagian program KPKT | Struktur data dummy tidak menepati keperluan sebenar | Adakan sesi bengkel keperluan (requirement workshop) bersama pemilik proses program sebelum reka bentuk skema data
+   286→   286→Pergantungan berlebihan kepada output AI (GLM 5.2) tanpa semakan | Kod yang dijana mungkin mengandungi ralat logik atau tidak selari dengan piawaian KPKT | Semua kod yang dijana AI mesti disemak dan diuji oleh jurutera perisian sebelum digabungkan (code review mandatori)
+   287→   287→Peralihan daripada data dummy kepada pangkalan data sebenar tidak lancar | Kelewatan Fasa 2 (integrasi sistem sebenar) | Reka bentuk lapisan perkhidmatan data (data service layer) yang modular supaya mudah ditukar sumber data
+   288→   288→Skop merangkak (scope creep) daripada pihak berkepentingan | Kelewatan penghantaran MVP | Kawalan perubahan skop melalui proses kelulusan formal (change request)
+   289→   289→Capaian data peruntukan OE sebenar daripada MOF/iGFMAS sukar diperoleh disebabkan kawalan keselamatan kewangan Kerajaan | Sub-modul Pemantauan Peruntukan OE kekal bergantung kepada data dummy lebih lama daripada dijadualkan | Libatkan Bahagian Kewangan KPKT sejak awal untuk memohon capaian rasmi mengikut prosedur kelulusan data kewangan Kerajaan; reka bentuk data dummy seselari mungkin dengan format sebenar bagi memudahkan peralihan
+   290→   290→Data peruntukan OE yang dipaparkan tidak dikemas kini tepat pada masanya oleh pengguna | Penunjuk baki peruntukan/status tidak mencerminkan kedudukan kewangan sebenar | Tetapkan keperluan kemas kini bulanan wajib dan hantar peringatan automatik kepada pemilik data peruntukan
+   291→   291→### TABLE 18 ###
+   292→   292→Nama | Jawatan/Peranan | Tandatangan | Tarikh
+   293→   293→ | Pengarah Bahagian Perancangan Strategik & Digital |  | 
+   294→   294→ | Ketua Pasukan Pembangunan Sistem |  | 
+   295→   295→ | Wakil Pengguna (Program Manager) |  | 
+   296→   296→### TABLE 19 ###
+   297→   297→Versi | Tarikh | Penerangan Perubahan | Disediakan Oleh
+   298→   298→1.0 | 29 Julai 2026 | Draf awal PRD | Bahagian Perancangan Strategik & Digital, KPKT
